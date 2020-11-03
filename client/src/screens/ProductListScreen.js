@@ -67,7 +67,7 @@ const ProductListScreen = ({history,match}) => {
     {
         deleteError && <Message>{deleteError}</Message>
     }
-        <Table striped bordered responsive className='table-sm'>
+        <Table striped bordered responsive className='table-sm text-center'>
             <thead>
                 <tr>
                     <th>ID</th>
