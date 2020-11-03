@@ -12,10 +12,11 @@ const RegisterScreen = ({history}) => {
   const [values, setValues] = useState({
     name:'',
     email:'',
-    password:''
+    password:'',
+    confirmPassword:''
   })
 
-  const {name,email,password}=values
+  const {name,email,password,confirmPassword}=values
 
   const userRegister=useSelector(state=>state.userRegister)
   const {error,loading,success} =userRegister
@@ -31,8 +32,13 @@ const RegisterScreen = ({history}) => {
 
   const submit=e=>{
     e.preventDefault()
-    const regData={name,email,password}
+    if(password !==confirmPassword){
+      window.alert('Passwords do not match')
+    }else{
+      const regData={name,email,password}
     dispatch(register(regData))
+    }
+    
   }
 
 
@@ -65,6 +71,11 @@ const RegisterScreen = ({history}) => {
     <Form.Group controlId="password">
       <Form.Label>Password</Form.Label>
       <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handleChange}/>
+    </Form.Group>
+
+    <Form.Group controlId="confPassword">
+      <Form.Label>Confirm Password</Form.Label>
+      <Form.Control type="text" placeholder="Confirm Password" name='confirmPassword' value={confirmPassword} onChange={handleChange}/>
     </Form.Group>
   
     <Button variant="dark" type="submit">
