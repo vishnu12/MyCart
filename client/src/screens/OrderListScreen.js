@@ -1,6 +1,7 @@
 
 import React,{useEffect} from 'react'
 import { Button, Table } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import { deliverOrder, listAllOrders } from '../actions/orderActions'
 import Loading from '../components/Loading'
@@ -52,7 +53,7 @@ const OrderListScreen = ({history}) => {
               {
                 order && order.map((item,k)=>{
                   return <tr key={k}>
-                  <td>{item._id}</td>
+                  <td><Link to={`/payment/${item._id}`} style={{textDecoration:'none',color:'green'}}>{item._id}</Link></td>
                   <td>{item.user.name}</td>
                   <td><a href={`mailto:${item.user.email}`} style={{textDecoration:'none',color:'green'}}>{item.user.email}</a></td>
                   <td>{item.isPaid?'PAID':'NOT PAID'}</td>
