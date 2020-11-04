@@ -23,7 +23,7 @@ const ShippingScreen = ({history}) => {
   return (
     <Row className='col-md-6 m-auto'>
       <Col>
-      <h1>Enter the details</h1>
+      <h1 className='text-center'>Enter the details</h1>
        <Form onSubmit={submit}>
        <Form.Group>
            <Form.Label>Address</Form.Label>
