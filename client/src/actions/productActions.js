@@ -24,13 +24,13 @@ import {
 
 
 
-export const listAllProducts=()=>async(dispatch)=>{
+export const listAllProducts=(keyword='',page='')=>async(dispatch)=>{
 
     try {
         dispatch({
             type:PRODUCT_LIST_REQUEST
         }) 
-      const {data}=await axios.get('/products')
+      const {data}=await axios.get(`/products?keyword=${keyword}&&page=${page}`)
        
       dispatch({
           type:PRODUCT_LIST_SUCCESS,

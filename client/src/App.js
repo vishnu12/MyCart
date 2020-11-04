@@ -27,6 +27,9 @@ function App() {
       <Container>
     <Switch>
     <Route exact path='/' component={Homescreen}/>
+    <Route path='/search/:keyword' component={Homescreen}/>
+    <Route path='/find/:page' component={Homescreen}/>
+    <Route path='/search/:keyword/find/:page' component={Homescreen}/>
     <Route path='/login' component={LoginScreen} />
     <Route path='/register' component={RegisterScreen} />
     <Route path='/profile' component={ProfileScreen} />
@@ -38,6 +41,7 @@ function App() {
     <Route exact path='/admin/users' component={UserListScreen} />
     <Route exact path='/admin/users/:id/edit' component={UserEditScreen} />
     <Route exact path='/admin/products' component={ProductListScreen} />
+    <Route exact path='/admin/products/:page' component={ProductListScreen} />
     <Route exact path='/admin/products/:id/edit' component={ProductEditScreen} />
     <Route exact path='/admin/orders' component={OrderListScreen} />
     </Switch>

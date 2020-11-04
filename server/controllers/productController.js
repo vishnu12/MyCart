@@ -3,9 +3,26 @@ import Product from '../models/productModel.js'
 
 export const getAllProducts=asyncHandler(async(req,res)=>{
 
-    const products=await Product.find({})
+
+    const pageSize=8
+
+    const page=Number(req.query.page) ||1
+
+    const keyword=req.query.keyword?{
+       name:{
+           $regex:req.query.keyword,
+           $options:'i'
+       }
+    }:{}
+
+    const count=await Product.countDocuments({...keyword})
+    const pages=Math.ceil(count/pageSize)
+    const products=await Product.find({...keyword})
+    .limit(pageSize)
+    .skip(pageSize*(page-1))
+
     if(products){
-        res.json(products)
+        res.json({products,page,pages})
     }else{
         res.status(404)
         throw new Error('No produts found')

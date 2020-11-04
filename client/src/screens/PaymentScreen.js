@@ -112,9 +112,11 @@ const PaymentScreen = ({match,history}) => {
 
                         {
         orderData && orderData.orderItems.map((item,k)=>{
+          const imgUrl=(`${item?.image}`).includes('uploads')?`${item?.image}`:`/${item?.image}`
             return <ListGroupItem key={k}>
                    <Row>
-                       <Col md={1}><Image src={`/${item.image}`} alt={item.name} fluid rounded style={{width:'30px'}}/></Col>
+                       <Col md={1}><Image src={imgUrl}
+                       alt={item.name} fluid rounded style={{width:'30px'}}/></Col>
                        <Col md={3}>
                       <p>{item.name}</p>
                        </Col>

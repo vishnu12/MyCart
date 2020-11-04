@@ -1,10 +1,12 @@
 
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
+import {Route} from 'react-router-dom'
 import {Nav,Navbar,NavDropdown,Badge} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
 import { logout } from '../actions/userActions'
+import SearchBox from './SearchBox'
 
 const Header = () => {
 
@@ -28,6 +30,9 @@ const logoutHandler=()=>{
   <Navbar.Brand ><Link className='text-white' style={{textDecoration:'none'}} to='/'>Home</Link></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
+    <div className='ml-4 p-2'>
+    <Route render={({history})=><SearchBox history={history}/>} />
+    </div>
     <Nav className="ml-auto">
         <LinkContainer to='/cart'>
         <Nav.Link className='text-white'><i className='fas fa-shopping-cart mr-1'></i>

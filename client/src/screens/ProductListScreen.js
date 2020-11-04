@@ -8,8 +8,11 @@ import { listAllProducts } from '../actions/productActions'
 // import { Link } from 'react-router-dom'
 import { createProduct,deleteProduct } from '../actions/productActions'
 import {PRODUCT_CREATE_RESET} from '../constants/productConstants'
+import PaginateComponent from '../components/PaginateComponent'
 
 const ProductListScreen = ({history,match}) => {
+
+    const page=match.params.page || 1
 
     const dispatch=useDispatch()
     
@@ -17,7 +20,7 @@ const ProductListScreen = ({history,match}) => {
     const {user}=userLogin
 
     const listProducts=useSelector(state=>state.listProducts)
-    const {error,loading,productList}=listProducts
+    const {error,loading,productList,pages}=listProducts
 
     const productCreate=useSelector(state=>state.productCreate)
     const {error:createError,loading:createLoading,success,createdProduct}=productCreate
@@ -32,9 +35,9 @@ const ProductListScreen = ({history,match}) => {
      }else if(success){
         history.push(`/admin/products/${createdProduct._id}/edit`)
      }else{
-        dispatch(listAllProducts())
+        dispatch(listAllProducts('',page))
      }
-    },[history,user,success,deleteSuccess])
+    },[history,user,success,deleteSuccess,page])
 
     const createHandler=()=>{
      dispatch(createProduct())
@@ -107,7 +110,7 @@ const ProductListScreen = ({history,match}) => {
                 })}
             </tbody>
          </Table> 
-    
+         <PaginateComponent page={page} pages={pages} isAdmin={true}/>
     </>
     }
      
