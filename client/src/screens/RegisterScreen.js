@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { Form,Button } from 'react-bootstrap'
+import { Form,Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { register } from '../actions/userActions'
 import Loading from '../components/Loading'
@@ -53,7 +53,7 @@ const RegisterScreen = ({history}) => {
     {
       loading?<Loading />
       :
-      <section className='col-md-6 m-auto text-center form-register'>
+      <Card className='col-md-6 m-auto text-center form-register'>
       {
         error && <Message>{error}</Message>
       }
@@ -83,7 +83,7 @@ const RegisterScreen = ({history}) => {
     </Button>
     <Link className='mt-3' to='/login' style={{textDecoration:'none'}}><p style={{color:'black'}}>Already have an account?</p></Link>
   </Form>
-  </section>
+  </Card>
     }
     
   </>

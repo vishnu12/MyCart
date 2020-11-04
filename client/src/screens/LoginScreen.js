@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { Form,Button } from 'react-bootstrap'
+import { Form,Button,Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { login } from '../actions/userActions'
 import Loading from '../components/Loading'
@@ -39,7 +39,7 @@ useEffect(()=>{
         :error?<Message>{error}</Message>
         :
         <>
-        <section className='col-md-6 m-auto text-center form'>
+        <Card className='col-md-6 m-auto text-center form'>
     <Form onSubmit={submit}>
     <Form.Group controlId="email">
       <Form.Label>Email address</Form.Label>
@@ -56,7 +56,7 @@ useEffect(()=>{
     </Button>
     <Link className='mt-3' to='/register' style={{textDecoration:'none'}}><p style={{color:'black'}}>Don't have an account?</p></Link>
   </Form>
-  </section>
+  </Card>
         </>
       }
     
