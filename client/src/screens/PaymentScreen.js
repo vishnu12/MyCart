@@ -131,9 +131,9 @@ const PaymentScreen = ({match,history}) => {
       </Col>
       <Col md={4}>
         <Card>
-          <ListGroup variant='flush'>
+          <ListGroup variant='flush' >
             <ListGroupItem>
-              <h2>Order Summary</h2>
+              <h2 className='text-center'>Order Summary</h2>
             </ListGroupItem>
             <ListGroupItem>
               <Row>
