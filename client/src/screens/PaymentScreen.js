@@ -55,7 +55,7 @@ const PaymentScreen = ({match,history}) => {
         setSdkReady(true)
       }
     }
-  }, [match,dispatch,history,success,deliverSuccess])
+  }, [match,dispatch,history,success,deliverSuccess,user])
 
 
   const successHandler=(result)=>{
@@ -138,25 +138,25 @@ const PaymentScreen = ({match,history}) => {
             <ListGroupItem>
               <Row>
                 <Col>Items</Col>
-                <Col>$ {orderData?.itemsPrice}</Col>
+                <Col className='text-right'>$ {orderData?.itemsPrice}</Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem>
               <Row>
                 <Col>Shipping</Col>
-                <Col>$ {orderData?.shippingPrice}</Col>
+                <Col className='text-right'>$ {orderData?.shippingPrice}</Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem>
               <Row>
                 <Col>Tax</Col>
-                <Col>$ {orderData?.taxPrice}</Col>
+                <Col className='text-right'>$ {orderData?.taxPrice}</Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem>
               <Row>
                 <Col>Total</Col>
-                <Col>$ {orderData?.totalPrice}</Col>
+                <Col className='text-right'>$ {orderData?.totalPrice}</Col>
               </Row>
             </ListGroupItem>
             {

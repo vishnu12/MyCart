@@ -91,30 +91,30 @@ useEffect(()=>{
         <Card>
 <ListGroup>
     <ListGroupItem>
-        <h3>ORDER SUMMARY</h3>
+        <h3 className='text-center'>ORDER SUMMARY</h3>
     </ListGroupItem>
     <ListGroupItem>
                           <Row>
                               <Col>Items</Col>
-                    <Col>$ {itemsPrice}</Col>
+                    <Col className='text-right'>$ {itemsPrice}</Col>
                           </Row>
                       </ListGroupItem>
                       <ListGroupItem>
                           <Row>
                               <Col>Shipping</Col>
-                    <Col>$ {shippingPrice}</Col>
+                    <Col className='text-right'>$ {shippingPrice}</Col>
                           </Row>
                       </ListGroupItem>
                       <ListGroupItem>
                           <Row>
                               <Col>Tax</Col>
-                    <Col>$ {taxPrice}</Col>
+                    <Col className='text-right'>$ {taxPrice}</Col>
                           </Row>
                       </ListGroupItem>
                       <ListGroupItem>
                           <Row>
                               <Col>Total</Col>
-                    <Col>$ {totalPrice}</Col>
+                    <Col className='text-right'>$ {totalPrice}</Col>
                           </Row>
                       </ListGroupItem>
                       {error && <Message>{error}</Message>}

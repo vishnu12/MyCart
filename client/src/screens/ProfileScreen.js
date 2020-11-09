@@ -49,7 +49,7 @@ const ProfileScreen = ({history}) => {
             })
         }
        
-        },[dispatch,userData,message,history])
+        },[dispatch,userData,message,history,user])
 
 
       useEffect(()=>{

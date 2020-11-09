@@ -45,9 +45,7 @@ const logoutHandler=()=>{
       <Nav.Link className='text-white'><i className="fas fa-user mr-1"></i>Login</Nav.Link>
      </LinkContainer>
      :user && !isAdmin?
-     <NavDropdown title={
-      <span className="text-white my-auto">{user.name}</span>
-  } id='username'>
+     <NavDropdown title={<span className="text-white my-auto">{user.name}</span>} id='username'>
       <LinkContainer to='/profile'>
           <NavDropdown.Item>Profile</NavDropdown.Item>
       </LinkContainer>
@@ -66,7 +64,7 @@ const logoutHandler=()=>{
       </NavDropdown>   
    <NavDropdown title={
       <span className="text-white my-auto">Admin</span>
-  } id='username'>
+  } id='admin'>
       <LinkContainer to='/admin/users'>
           <NavDropdown.Item>Users</NavDropdown.Item>
       </LinkContainer>
