@@ -6,6 +6,7 @@ import { getProductDetails } from '../actions/productActions'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
 import ProductReview from '../components/ProductReview'
+import {PRODUCT_REVIEW_RESET} from '../constants/productConstants'
 
 const ProductDetails = ({match,history,location}) => {
 
@@ -25,8 +26,10 @@ const ProductDetails = ({match,history,location}) => {
     }
     
     useEffect(()=>{
-      dispatch(getProductDetails(prodId))
-    },[match,dispatch,success])
+       dispatch({type:PRODUCT_REVIEW_RESET})
+       dispatch(getProductDetails(prodId))
+
+    },[match,dispatch,success,prodId])
 
    const imgUrl=(`${product?.image}`).includes('uploads')?`${product?.image}`:`/${product?.image}`
   return (
@@ -68,7 +71,7 @@ const ProductDetails = ({match,history,location}) => {
          
          <Col md={6} className='text-center align-items-center'>
            {
-             reviewError && <Message>{reviewError}</Message>
+             reviewError?<Message>{reviewError}</Message>:''
            }
       <ProductReview productId={prodId}/>
          </Col>
