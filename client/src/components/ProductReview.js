@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const ProductReview = () => {
+const ProductReview = ({productId}) => {
 
     const [rating, setRating] = useState(1)
     const [comment, setComment] = useState('')
@@ -44,7 +44,7 @@ const ProductReview = () => {
                         <ListGroupItem>
                         <h3 className='mb-4'>Write A Review</h3>
                         {
-                            !user?<Link to='/login'>Please login to write a review</Link>
+                            !user?<Link to={`/login?redirect=/product/${productId}`} style={{textDecoration:'none',color:'green'}}>Please login to write a review</Link>
                             :
                             <Form onSubmit={submit} variant='flush'>
                                           <Form.Group controlId='rating'>

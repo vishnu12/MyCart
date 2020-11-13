@@ -71,7 +71,7 @@ const ProductDetails = ({match,history,location}) => {
            {
              reviewError && <Message>{reviewError}</Message>
            }
-      <ProductReview />
+      <ProductReview productId={prodId}/>
          </Col>
     </Row> 
     }
