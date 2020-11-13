@@ -102,7 +102,9 @@ export const updateOrderToDelivered=asyncHandler(async(req,res)=>{
 
 export const getOrdersOfUser=asyncHandler(async(req,res)=>{
 
-    const orders=await Order.find({user:req.user._id}).populate('user','name email')
+    const orders=await Order.find({user:req.user._id})
+    .populate('user','name email')
+    .sort('-createdAt')
     if(orders){
         res.status(200).json(orders)
     }else{
@@ -114,7 +116,7 @@ export const getOrdersOfUser=asyncHandler(async(req,res)=>{
 
 export const getAllOrders=asyncHandler(async(req,res)=>{
 
-    const orders=await Order.find({}).populate('user','name email')
+    const orders=await Order.find({}).populate('user','name email').sort('-createdAt')
     if(orders){
         res.status(200).json(orders)
     }else{
