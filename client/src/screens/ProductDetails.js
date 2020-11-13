@@ -6,7 +6,9 @@ import { getProductDetails } from '../actions/productActions'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
 import ProductReview from '../components/ProductReview'
+
 const ProductDetails = ({match,history,location}) => {
+
 
     const prodId=match.params.id
     const dispatch=useDispatch()
@@ -21,7 +23,6 @@ const ProductDetails = ({match,history,location}) => {
       history.push(`/cart/${prodId}?qty=1`)
       
     }
-
     
     useEffect(()=>{
       dispatch(getProductDetails(prodId))
@@ -31,33 +32,31 @@ const ProductDetails = ({match,history,location}) => {
   return (
       <>
       {
-          (loading ||reviewLoading) && <Loading />
-      }
-
-       {
-          error && <Message>{error}</Message>
-      }
-  {
-  product && 
+          (loading ||reviewLoading)?<Loading />
+         :
+          error? <Message>{error}</Message>
+         :
+  <>
+  
      <Row>
          <Col md={6}>
           <Row>
        <Col md={7} className='text-center'>
-  <h2>{product.name}</h2>
-  <Image src={imgUrl} alt={product.name} fluid/>
+  <h2>{product?.name}</h2>
+  <Image src={imgUrl} alt={product?.name} fluid/>
  
        </Col>
        <Col md={5} style={{marginTop:'5rem'}}>
-  <h5><strong>Brand : {product.brand}</strong></h5>
-  <p>{product.description}</p>
-  <h5>Price : ${product.price}</h5>
+  <h5><strong>Brand : {product?.brand}</strong></h5>
+  <p>{product?.description}</p>
+  <h5>Price : ${product?.price}</h5>
   {
-    product.stock !==0?
+    product?.stock !==0?
     <p>In stock</p>
     :
     <p style={{color:'red'}}>Out of stock</p>
   }
-  <Button variant='outline-dark' style={{marginTop:'2rem'}} onClick={addToCart} disabled={product.stock===0}>
+  <Button variant='outline-dark' style={{marginTop:'2rem'}} onClick={addToCart} disabled={product?.stock===0}>
    Add to Cart
   </Button>
   
@@ -74,7 +73,8 @@ const ProductDetails = ({match,history,location}) => {
       <ProductReview productId={prodId}/>
          </Col>
     </Row> 
-    }
+   </>
+}
     </>
   )
 }
